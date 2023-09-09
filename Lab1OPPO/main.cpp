@@ -13,6 +13,7 @@ private:
 	bool setDate(int year, int month, int day);
 public:
 	date() : year(0), month(0), day(0) {}
+	~date() {};
 	bool read(std::istream& ist);
 	void print(std::ostream& ost);
 };
@@ -43,6 +44,8 @@ private:
 	bool readSource(std::istream& ist);
 	bool readSum(std::istream& ist);
 public:
+	income() {};
+	~income() {};
 	bool read(std::istream& ist);
 	void print(std::ostream& ost);
 };
@@ -95,13 +98,12 @@ void printDatabase(std::vector<income>& dataBase)
 		inc.print(cout);
 	}
 }
-int main()
+bool readDataBase(std::vector<income>& dataBase)
 {
-	vector<income> dataBase;
 	ifstream in("in.txt");
 	if (!in.is_open())
 	{
-		return 1;
+		return false;
 	}
 	while (!in.eof())
 	{
@@ -109,7 +111,12 @@ int main()
 		inc.read(in);
 		dataBase.push_back(inc);
 	}
-
+	return true;
+}
+int main()
+{
+	vector<income> dataBase;
+	readDataBase(dataBase);
 	printDatabase(dataBase);
 	return 0;
 }
