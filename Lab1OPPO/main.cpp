@@ -61,8 +61,7 @@ bool Income::ReadSum(std::istream& ist){
 
 bool Income::ReadSource(std::istream& ist){
 	string buffer;
-	while (true)
-	{
+	while (true){
 		ist >> buffer;
 		source_.append(buffer + " ");
 		if (buffer.back() == '"'){
@@ -82,16 +81,14 @@ bool Income::ReadIncome(std::istream& ist){
 	return true;
 }
 
-void PrintDatabase(std::vector<Income>& dataBase)
-{
+void PrintDatabase(std::vector<Income>& dataBase){
 	vector<Income>::iterator it;
 	for (it = dataBase.begin(); it != dataBase.end(); it++){
 		Income inc = *it;
 		inc.PrintDate(cout);
 	}
 }
-bool ReadDatabase(std::vector<Income>& dataBase)
-{
+bool ReadDatabase(std::vector<Income>& dataBase){
 	ifstream in("in.txt");
 	if (!in.is_open()){
 		return false;
