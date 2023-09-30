@@ -13,11 +13,7 @@ void PrintDatabase(std::vector<Income>& dataBase) {
 	}
 }
 
-bool ReadDatabase(std::vector<Income>& dataBase){
-	ifstream in("in.txt");
-	if (!in.is_open()){
-		return false;
-	}
+bool ReadDatabase(std::vector<Income>& dataBase, istream& in){
 	while (!in.eof()){
 		Income inc;
 		inc.ReadIncome(in);
@@ -27,8 +23,12 @@ bool ReadDatabase(std::vector<Income>& dataBase){
 }
 
 int main(){
+	ifstream in("in.txt");
+	if (!in.is_open()) {
+		return false;
+	}
 	vector<Income> dataBase;
-	ReadDatabase(dataBase);
+	ReadDatabase(dataBase, in);
 	PrintDatabase(dataBase);
 	return 0;
 }
