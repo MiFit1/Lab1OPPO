@@ -4,31 +4,55 @@ void Income::PrintIncome(std::ostream& ost) {
 	ost << source_ << " ";
 	ost << sum_ << std::endl;
 }
-bool Income::ReadSum(std::istream& ist) {
+void Income::ReadSum(std::istream& ist) {
 	std::string buffer;
 	ist >> buffer;
-	sum_ = stoi(buffer);
-	return true;
+	if (buffer.empty()){
+		throw std::runtime_error("Ошибка при чтении суммы, так как поле пусто");
+	}
+	try {
+		sum_ = stoi(buffer);
+	}
+	catch (const std::invalid_argument)
+	{
+		throw std::runtime_error("Не удалось преобразовать сумму в число");
+	}
+	catch (const std::out_of_range)
+	{
+		throw std::runtime_error("Поле суммы слишком велико");
+	}
 }
 
-bool Income::ReadSource(std::istream& ist) {
+void Income::ReadSource(std::istream& ist) {
 	std::string buffer;
-	while (true) {
-		ist >> buffer;
-		source_.append(buffer + " ");
+	while (ist >> buffer) {
+		source_.append(buffer);
 		if (buffer.back() == '"') {
 			break;
 		}
+		source_.append(" ");
 	}
-	source_.erase(source_.end() - 2, source_.end()--);
+	if (buffer.empty()) {
+		throw std::runtime_error("Ошибка при чтении организации, так как это поле отсутсвует");
+		return;
+	}
+
+	if ((source_.at(0) != '"')||(source_).back() != '"') {
+		throw std::runtime_error("Ошибка при чтении организации, неверный формат записи");
+		return;
+	}
+	source_.erase(--source_.end());
 	source_.erase(source_.begin());
 
-	return true;
 }
-bool Income::ReadIncome(std::istream& ist) {
-	date_receip_.ReadDate(ist);
-	ReadSource(ist);
-	ReadSum(ist);
+void Income::ReadIncome(std::istream& ist) {
 
-	return true;
+	std::string buffer;
+	std::getline(ist, buffer);
+	std::istringstream istStr(buffer);
+
+	date_receip_.ReadDate(istStr);
+	ReadSource(istStr);
+	ReadSum(istStr);
+
 }

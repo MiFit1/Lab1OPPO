@@ -5,12 +5,12 @@ class Date {
 public:
 	Date() : year_(0), month_(0), day_(0) {}
 	~Date() {};
-	bool ReadDate(std::istream& ist);
+	void ReadDate(std::istream& ist);
 	void PrintDate(std::ostream& ost);
 private:
 	int year_;
 	int month_;
-	int day_;
-
-	bool SetDate(int year_, int month_, int day_);
+	int day_;	
+	bool CheckDateCorrect();
+	bool CheckLeapYear(int year);
 };

@@ -2,18 +2,19 @@
 #include "date.h"
 #include <string>
 #include <iostream>
+#include <sstream>
 class Income
 {
 private:
 	Date date_receip_;
 	std::string source_;
-	int sum_;
+	int sum_ = 0;
 
-	bool ReadSource(std::istream& ist);
-	bool ReadSum(std::istream& ist);
+	void ReadSource(std::istream& ist);
+	void ReadSum(std::istream& ist);
 public:
-	Income() {};
+	Income(){};
 	~Income() {};
-	bool ReadIncome(std::istream& ist);
+	void ReadIncome(std::istream& ist);
 	void PrintIncome(std::ostream& ost);
 };
