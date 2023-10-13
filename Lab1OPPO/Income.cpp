@@ -8,18 +8,18 @@ void Income::ReadSum(std::istream& ist) {
 	std::string buffer;
 	ist >> buffer;
 	if (buffer.empty()){
-		throw std::runtime_error("Ошибка при чтении суммы, так как поле пусто");
+		throw std::runtime_error("Ошибка при чтении суммы, так как поле пусто.");
 	}
 	try {
 		sum_ = stoi(buffer);
 	}
 	catch (const std::invalid_argument)
 	{
-		throw std::runtime_error("Не удалось преобразовать сумму в число");
+		throw std::runtime_error("Не удалось преобразовать сумму в число.");
 	}
 	catch (const std::out_of_range)
 	{
-		throw std::runtime_error("Поле суммы слишком велико");
+		throw std::runtime_error("Поле суммы слишком велико.");
 	}
 }
 
@@ -33,12 +33,12 @@ void Income::ReadSource(std::istream& ist) {
 		source_.append(" ");
 	}
 	if (buffer.empty()) {
-		throw std::runtime_error("Ошибка при чтении организации, так как это поле отсутсвует");
+		throw std::runtime_error("Ошибка при чтении организации, так как это поле отсутсвует.");
 		return;
 	}
 
 	if ((source_.at(0) != '"')||(source_).back() != '"') {
-		throw std::runtime_error("Ошибка при чтении организации, неверный формат записи");
+		throw std::runtime_error("Ошибка при чтении организации, неверный формат записи.");
 		return;
 	}
 	source_.erase(--source_.end());

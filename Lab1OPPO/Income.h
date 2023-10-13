@@ -12,6 +12,7 @@ private:
 
 	void ReadSource(std::istream& ist);
 	void ReadSum(std::istream& ist);
+    friend class Test;
 public:
 	Income(){};
 	~Income() {};
