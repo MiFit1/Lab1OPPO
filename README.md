@@ -2,4 +2,4 @@
 Доходы: дата, источник (строка), сумма (целое)
 Применён Google style
 
-![LS_12W8X40RW-pp572lm7VRGfLlK0yYWGmchXex1ilJkpQP4NKH_vlzafYfKfCKPt4oruYcv77a5SoHXz7hOmex3muAvIWdfXZMtubZV8GdM5YqyS_1uOVAzlTltvApZyerUCBxOvBMt5wOoe9YJtCVTq_A3wlm_EO9Dx3eUZFcm01Cdhzky0G00](https://github.com/MiFit1/Lab1OPPO/assets/62600537/505bbfa4-a787-4507-97d6-4c68933e2bb9)
+![NOzB2W8n343tEKMMVkWTPk76dUW1Xj06BKnRQLDX6BoxBGqYRahpuBsGgGXbgM41kr0fU8us1Tx0d4WONNlcp9RzSmPpa-pZ7KkgsNARVHGiDSnmV2NlyChaXhxRAxeqGRxi3RgajxVXhqnPKo55UUZVqVgRRS9VL4blZZuUZC5E0IQEhbtq0G00](https://github.com/MiFit1/Lab1OPPO/assets/62600537/a018c287-9311-47ef-a633-727c3f784753)
