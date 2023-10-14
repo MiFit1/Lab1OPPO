@@ -1,0 +1,21 @@
+@startuml
+class Income{
+-Date date_receip_
+-String source_
+-int sum_
+void ReadIncome()
+void PrintIncome()
+}
+
+class Date{
+-int year_
+-int month_
+-int day_
+void ReadDate()
+void PrintDate()
+
+}
+
+Income *-- Date
+
+@enduml
