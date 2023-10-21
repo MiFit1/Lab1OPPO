@@ -2,6 +2,12 @@
 #include <fstream>
 #include <string>
 
+namespace TestCore
+{
+    class Test;
+}
+
+
 class Date {
 public:
 	Date() : Date(0,0,0) {}
@@ -18,5 +24,5 @@ private:
 	bool CheckLeapYear(int year);
     void SetDate(int year, int month, int day) 
     { year_ = year; month_ = month; day_ = day; }
-	friend class Test;
+	friend class TestCore::Test;
 };

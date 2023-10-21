@@ -3,6 +3,12 @@
 #include <string>
 #include <iostream>
 #include <sstream>
+
+namespace TestCore
+{
+    class Test;
+}
+
 class Income
 {
 private:
@@ -12,7 +18,10 @@ private:
 
 	void ReadSource(std::istream& ist);
 	void ReadSum(std::istream& ist);
-    friend class Test;
+    bool FindAllowedSourceChar(char ch);
+    bool CheckingValidName();
+    static constexpr char allowedCharacters[] = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890 ";
+    friend class TestCore::Test;
 public:
 	Income(){};
 	~Income() {};

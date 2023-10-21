@@ -39,8 +39,9 @@ bool ReadDatabase(std::vector<Income>& dataBase, istream& in){
 int main(){
 	setlocale(LC_ALL, "Rus");
 	ifstream in("in.txt");
+
 	if (!in.is_open()) {
-		return false;
+		return 1;
 	}
 	vector<Income> dataBase;
 

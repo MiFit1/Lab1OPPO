@@ -3,19 +3,23 @@ class Income{
 -Date date_receip_
 -String source_
 -int sum_
-void ReadIncome()
-void PrintIncome()
++void ReadIncome()
++void PrintIncome()
+-void ReadSource()
+-void ReadSum()
+-bool FindAllowedSourceChar()
+-bool CheckingValidName()
 }
 
 class Date{
 -int year_
 -int month_
 -int day_
-void ReadDate()
-void PrintDate()
-
++void ReadDate()
++void PrintDate()
+-bool CheckDateCorrect()
+-bool CheckLeapYear()
+-void SetDate()
 }
 
 Income *-- Date
-
-@enduml
