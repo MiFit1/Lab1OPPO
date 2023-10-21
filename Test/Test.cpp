@@ -11,183 +11,101 @@ namespace TestCore {
 
         TEST_METHOD(TestReadDate1)
         {
-            Date date;
-            std::string textToCheck = "2005.. ";
-            std::istringstream istStr(textToCheck);
-            
-            const auto func = [&] { date.ReadDate(istStr); };
-
+            const auto func = [] {
+                auto sin = std::istringstream{"2005.. "};
+                Date date;  date.ReadDate(sin);
+            };
             Assert::ExpectException<std::runtime_error>(func);
         }
 
         TEST_METHOD(TestReadDate2)
         {
-            Date date;
-            std::string TextError = "Не удалось считать дату, так как строка пустая.";
-            try {
-                std::string textToCheck = "\n";
-                std::istringstream istStr(textToCheck);
-                date.ReadDate(istStr);
-            }
-            catch (const std::runtime_error& e)
-            {
-                Assert::AreEqual(TextError.c_str(), e.what());
-                return;
-            }
-            Assert::Fail();
+            const auto func = [] {
+                auto sin = std::istringstream{ "\n" };
+                Date date;  date.ReadDate(sin);
+            };
+            Assert::ExpectException<std::runtime_error>(func);
         }
 
         TEST_METHOD(TestReadDate3)
         {
-            Date date;
-            std::string TextError = "Неккоректная дата.";
-            try {
-                std::string textToCheck = "500.02.29 \"Org5\" 135";
-                std::istringstream istStr(textToCheck);
-                date.ReadDate(istStr);
-            }
-            catch (const std::runtime_error& e)
-            {
-                Assert::AreEqual(TextError.c_str(), e.what());
-                return;
-            }
-            Assert::Fail();
+            const auto func = [] {
+                auto sin = std::istringstream{ "500.02.29 \"Org5\" 135" };
+                Date date;  date.ReadDate(sin);
+            };
+            Assert::ExpectException<std::runtime_error>(func);
         }
 
         TEST_METHOD(TestReadDate4)
         {
-            Date date;
-            std::string TextError = "Неккоректная дата.";
-            try {
-                std::string textToCheck = "0.05.2 \"Org8\" 1231";
-                std::istringstream istStr(textToCheck);
-                date.ReadDate(istStr);
-            }
-            catch (const std::runtime_error& e)
-            {
-                Assert::AreEqual(TextError.c_str(), e.what());
-                return;
-            }
-            Assert::Fail();
+            const auto func = [] {
+                auto sin = std::istringstream{ "0.05.2 \"Org8\" 1231" };
+                Date date;  date.ReadDate(sin);
+            };
+            Assert::ExpectException<std::runtime_error>(func);
         }
 
         TEST_METHOD(TestReadDate5)
         {
-            Date date;
-            std::string TextError = "Неккоректная дата.";
-            try {
-                std::string textToCheck = "1.08.32 \"Org9\" 145";
-                std::istringstream istStr(textToCheck);
-                date.ReadDate(istStr);
-            }
-            catch (const std::runtime_error& e)
-            {
-                Assert::AreEqual(TextError.c_str(), e.what());
-                return;
-            }
-            Assert::Fail();
+            const auto func = [] {
+                auto sin = std::istringstream{ "1.08.32 \"Org9\" 145" };
+                Date date;  date.ReadDate(sin);
+            };
+            Assert::ExpectException<std::runtime_error>(func);
         }
 
         TEST_METHOD(TestReadDate6)
         {
-            Date date;
-            std::string TextError = "Неккоректная дата.";
-            try {
-                std::string textToCheck = "1.06.31 \"Org10\" 12314";
-                std::istringstream istStr(textToCheck);
-                date.ReadDate(istStr);
-            }
-            catch (const std::runtime_error& e)
-            {
-                Assert::AreEqual(TextError.c_str(), e.what());
-                return;
-            }
-            Assert::Fail();
+            const auto func = [] {
+                auto sin = std::istringstream{ "1.06.31 \"Org10\" 12314" };
+                Date date;  date.ReadDate(sin);
+            };
+            Assert::ExpectException<std::runtime_error>(func);
         }
 
         TEST_METHOD(ReadSource1)
         {
-            Income inc;
-            std::string TextError = "Ошибка при чтении организации, неверный формат записи.";
-            try {
-                std::string textToCheck = "\"Org12 123 ";
-                std::istringstream istStr(textToCheck);
-                inc.ReadSource(istStr);
-            }
-            catch (const std::runtime_error& e)
-            {
-                Assert::AreEqual(TextError.c_str(), e.what());
-                return;
-            }
-            Assert::Fail();
+            const auto func = [] {
+                auto sin = std::istringstream{ "\"Org12 123 " };
+                Income inc;  inc.ReadSource(sin);
+            };
+            Assert::ExpectException<std::runtime_error>(func);
         }
 
         TEST_METHOD(ReadSource2)
         {
-            Income inc;
-            std::string TextError = "Ошибка, в названии организации используются запрещённые символы";
-            try {
-                std::string textToCheck = "\"Org?12\"";
-                std::istringstream istStr(textToCheck);
-                inc.ReadSource(istStr);
-            }
-            catch (const std::runtime_error& e)
-            {
-                Assert::AreEqual(TextError.c_str(), e.what());
-                return;
-            }
-            Assert::Fail();
+            const auto func = [] {
+                auto sin = std::istringstream{ "\"Org?12\"" };
+                Income inc;  inc.ReadSource(sin);
+            };
+            Assert::ExpectException<std::runtime_error>(func);
         }
 
         TEST_METHOD(ReadSum1)
         {
-            Income inc;
-            std::string TextError = "Ошибка при чтении суммы, так как поле пусто.";
-            try {
-                std::string textToCheck = "";
-                std::istringstream istStr(textToCheck);
-                inc.ReadSum(istStr);
-            }
-            catch (const std::runtime_error& e)
-            {
-                Assert::AreEqual(TextError.c_str(), e.what());
-                return;
-            }
-            Assert::Fail();
+            const auto func = [] {
+                auto sin = std::istringstream{ "" };
+                Income inc;  inc.ReadSum(sin);
+            };
+            Assert::ExpectException<std::runtime_error>(func);
         }
 
         TEST_METHOD(ReadSum2)
         {
-            Income inc;
-            std::string TextError = "Поле суммы слишком велико.";
-            try {
-                std::string textToCheck = "8123987192387679679069";
-                std::istringstream istStr(textToCheck);
-                inc.ReadSum(istStr);
-            }
-            catch (const std::runtime_error& e)
-            {
-                Assert::AreEqual(TextError.c_str(), e.what());
-                return;
-            }
-            Assert::Fail();
+            const auto func = [] {
+                auto sin = std::istringstream{ "8123987192387679679069" };
+                Income inc;  inc.ReadSum(sin);
+            };
+            Assert::ExpectException<std::runtime_error>(func);
         }
 
         TEST_METHOD(ReadSum3)
         {
-            Income inc;
-            std::string TextError = "Поле суммы не может быть отрицательным.";
-            try {
-                std::string textToCheck = "-1";
-                std::istringstream istStr(textToCheck);
-                inc.ReadSum(istStr);
-            }
-            catch (const std::runtime_error& e)
-            {
-                Assert::AreEqual(TextError.c_str(), e.what());
-                return;
-            }
-            Assert::Fail();
+            const auto func = [] {
+                auto sin = std::istringstream{ "-1" };
+                Income inc;  inc.ReadSum(sin);
+            };
+            Assert::ExpectException<std::runtime_error>(func);
         }
 
         TEST_METHOD(LeapYearTest)
