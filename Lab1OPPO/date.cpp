@@ -1,3 +1,5 @@
+// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
 //#include <string>
 #include "date.h"
 #include <exception>
@@ -53,13 +55,6 @@ bool Date::CheckDateCorrect()
 {
 	if ((year_ < 1)||((month_ < 1)||(month_ > 12))||((day_ < 1)||(day_ > 31))){
 		return false;
-	}
-
-	if ((month_ == 1) || (month_ == 3) || (month_ == 5) || (month_ == 7) ||
-		(month_ == 8) || (month_ == 10) || (month_ == 12)){
-		if (day_ > 31) {
-			return false;
-		}
 	}
 
 	if ((month_ == 4) || (month_ == 6) || (month_ == 9) || (month_ == 11)) {
